@@ -1,11 +1,11 @@
-size(800, 600);
-  background(30);
 int gridSize = 10;
-float squareSize = width / gridSize;
+int squareSize = int(width / gridSize);
 
-for (int i = 0; j < gridSize
-  for (int y = 40; y <= height; y += 80) {
-    for (int x = 40; x <= width; x += 80) {
- square(x, y, 50);
-    }
-  }
+size(800, 600);
+background(255);
+noStroke();
+fill(0);
+
+for (int y = 0; y <= height; y += 2*squareSize) {
+  if (y % squareSize*2 == 0) for (int x = 0; x <= width; x += 2*squareSize) square(x, y, squareSize);
+}
