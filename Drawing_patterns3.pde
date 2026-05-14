@@ -1,19 +1,35 @@
-size(800, 650);
-background(255);
-int t = 80; 
-int tileSize;
-int gridSize;
-gridSize = 10;
-tileSize = int(width / gridSize);
-    translate(tileSize/2, tileSize*2);
-for (int y = 0; y < height; y += t) {
-  for (int x = 0; x < width; x += t) {
-    translate(tileSize, 0);
-    fill(0);
-    triangle(-tileSize/2, -tileSize/2, -tileSize/2 , tileSize/2, tileSize/2, tileSize/2);
-    fill(255);
-    //triangle(x + t, y, x + t, y + t, x, y + t);
-rotate(radians(90));
+int TILE_SIZE = 100;
+
+void setup() {
+  size(800, 800);
+}
+
+void draw() {
+  for (int row = 0; row < 8; row++) {
+    for (int col = 0; col < 8; col++) {
+      int x = col * TILE_SIZE;
+      int y = row * TILE_SIZE;
+      
+      fill(0);
+      noStroke();
+      
+      if (row % 2 == 0) {
+        if (col % 2 == 0) {
+         
+          triangle(x + TILE_SIZE, y, x + TILE_SIZE, y + TILE_SIZE, x, y);
+        } else {
+          
+          triangle(x + TILE_SIZE, y, x + TILE_SIZE, y + TILE_SIZE, x, y + TILE_SIZE);
+        }
+      } else {
+        if (col % 2 == 0) {
+         
+          triangle(x, y, x + TILE_SIZE, y, x, y + TILE_SIZE);
+        } else {
+      
+          triangle(x, y, x, y + TILE_SIZE, x + TILE_SIZE, y + TILE_SIZE);
+        }
+      }
+    }
   }
-  translate(0, tileSize);
 }
